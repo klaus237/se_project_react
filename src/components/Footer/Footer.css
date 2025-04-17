@@ -1,0 +1,7 @@
+.footer {
+  font-family: "Cabinet Grotesk", sans-serif;
+  display: flex;
+  align-items: center;
+  padding: 32px 0 28px;
+  justify-content: space-between;
+}
