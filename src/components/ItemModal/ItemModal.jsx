@@ -1,6 +1,8 @@
 import "./ItemModal.css";
 import closeIcon from "../../assets/union.png";
-function ItemModal({ activeModal, onClose, card }) {
+function ItemModal({ activeModal, onClose, card, onDeleteClick }) {
+  if (!card) return null;
+
   return (
     <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
       <div className="modal__content modal__content_type_image">
@@ -14,9 +16,21 @@ function ItemModal({ activeModal, onClose, card }) {
           onClick={onClose}
           style={{ cursor: "pointer" }}
         />
-        <img src={card.link} alt={card.name} className="modal__image" />
+        <img
+          src={card.imageUrl ? card.imageUrl : card.link}
+          alt={card.name}
+          className="modal__image"
+        />
         <div className="modal__footer">
-          <h3 className="modal__caption">{card.name}</h3>
+          <div className="modal__header">
+            <h3 className="modal__caption">{card.name}</h3>
+            <button
+              className="modal__delete-btn"
+              onClick={() => onDeleteClick(card)}
+            >
+              Delete item
+            </button>
+          </div>
           <p className="modal__weather">Weather: {card.weather}</p>
         </div>
       </div>

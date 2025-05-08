@@ -1,6 +1,13 @@
 import "./ModalWithForm.css";
 import closeIcon from "../../assets/union.png";
-function ModalWithForm({ children, buttonText, title, isOpen, onClose }) {
+function ModalWithForm({
+  children,
+  buttonText,
+  title,
+  isOpen,
+  onClose,
+  onSubmit,
+}) {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__content">
@@ -17,7 +24,7 @@ function ModalWithForm({ children, buttonText, title, isOpen, onClose }) {
           style={{ cursor: "pointer" }}
         />
 
-        <form className="modal__form">
+        <form onSubmit={onSubmit} className="modal__form">
           {children}
           <button type="submit" className="modal__submit">
             {buttonText}

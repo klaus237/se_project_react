@@ -1,0 +1,9 @@
+.sidebar {
+  display: flex;
+  gap: 8px;
+}
+.sidebar__username {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0%;
+}

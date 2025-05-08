@@ -8,6 +8,13 @@
   position: absolute;
   top: 15px;
   margin: 0;
+  background: rgba(255, 255, 255, 1);
+  gap: 8px;
+  border-radius: 4px;
+  padding-top: 2px;
+  padding-right: 12px;
+  padding-bottom: 2px;
+  padding-left: 12px;
 }
 
 .card__image {

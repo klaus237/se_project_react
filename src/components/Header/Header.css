@@ -6,11 +6,21 @@
 .header__logo {
   margin-right: 24px;
 }
-.header__dat-and-location {
+.header__date-and-location {
   margin: 0;
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0%;
+  color: rgba(0, 0, 0, 1);
 }
 .header__add-clothes-btn {
   margin: 0 20px 0 auto;
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0%;
+  color: rgba(0, 0, 0, 1);
 }
 
 .header__user-container {
@@ -21,4 +31,18 @@
 
 .header__username {
   margin: 0;
+}
+.header__right-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+.header__link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0%;
 }
