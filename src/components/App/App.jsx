@@ -9,9 +9,8 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
-import currentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
-//import { defaultClothingItems } from "../../utils/constants";
 import Profile from "../Profile/Profile";
 import { getItems, addItem, deleteItem } from "../../utils/Api";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
@@ -42,13 +41,8 @@ function App() {
     setActiveModal("");
   };
 
-  // const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-  //   setClothingItems([{ name, link: imageUrl, weather }, ...clothingItems]); //update clothings
-  //   closeActiveModal(); //close the moodal
-  // };
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
     handleAddItem({ name, imageUrl, weather });
-    closeActiveModal();
   };
 
   const [showPreview, setShowPreview] = useState(false);
@@ -57,6 +51,7 @@ function App() {
     addItem(newItem)
       .then((createdItem) => {
         setClothingItems([createdItem, ...clothingItems]);
+        closeActiveModal();
       })
       .catch((err) => console.error("Failed to add item:", err));
   }
@@ -101,7 +96,7 @@ function App() {
   }, []);
 
   return (
-    <currentTemperatureUnitContext.Provider
+    <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
       <div className="page">
@@ -125,6 +120,7 @@ function App() {
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
                   setClothingItems={setClothingItems}
+                  onAddClick={handleAddClick}
                 />
               }
             />
@@ -150,7 +146,7 @@ function App() {
           <Footer />
         </div>
       </div>
-    </currentTemperatureUnitContext.Provider>
+    </CurrentTemperatureUnitContext.Provider>
   );
 }
 

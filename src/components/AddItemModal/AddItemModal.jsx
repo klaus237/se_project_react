@@ -10,6 +10,15 @@ export default function AddItemModal({
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
+
+  useEffect(() => {
+    if (isOpen) {
+      setName("");
+      setImageUrl("");
+      setWeather("");
+    }
+  }, [isOpen]);
+
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -24,9 +33,9 @@ export default function AddItemModal({
     console.log("submitted the add-item modal");
     e.preventDefault();
     onAddItemModalSubmit({ name, imageUrl, weather });
-    setName("");
-    setImageUrl("");
-    setWeather("");
+    // setName("");
+    // setImageUrl("");
+    // setWeather("");
   };
   return (
     <ModalWithForm

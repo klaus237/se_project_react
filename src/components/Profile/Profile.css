@@ -8,6 +8,6 @@
   width: 250px; /* Or any size that fits your sidebar */
 }
 
-.profile__cloting-items {
+.profile__clothing-items {
   flex: 1; /* Let this section take the remaining space */
 }
