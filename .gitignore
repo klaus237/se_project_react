@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# Exclure tout ce qui est en dehors du projet
+../../*
+
+# Optionnel : ignorer les fichiers système/mac
+.DS_Store
+Thumbs.db
