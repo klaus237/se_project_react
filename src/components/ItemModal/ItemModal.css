@@ -40,3 +40,6 @@
   height: 24;
   background-color: #fff;
 }
+.modal__delete-btn_hidden {
+  display: none;
+}

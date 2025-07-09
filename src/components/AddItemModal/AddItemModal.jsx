@@ -10,12 +10,21 @@ export default function AddItemModal({
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
+  const [urlTouched, setUrlTouched] = useState(false);
+
+  const nameIsValid = name.trim().length > 0;
+  const imageUrlIsValid = /^https?:\/\/.+\..+/.test(imageUrl);
+  const weatherIsValid = weather !== "";
+
+  const isFormValid = nameIsValid && imageUrlIsValid && weatherIsValid;
+  const urlError = urlTouched && !imageUrlIsValid;
 
   useEffect(() => {
     if (isOpen) {
       setName("");
       setImageUrl("");
       setWeather("");
+      setUrlTouched(false);
     }
   }, [isOpen]);
 
@@ -24,13 +33,13 @@ export default function AddItemModal({
   };
   const handleImageUrlChange = (e) => {
     setImageUrl(e.target.value);
+    if (!urlTouched) setUrlTouched(true);
   };
   const handleWeatherChange = (e) => {
     setWeather(e.target.value);
   };
 
   const handleSubmit = (e) => {
-    console.log("submitted the add-item modal");
     e.preventDefault();
     onAddItemModalSubmit({ name, imageUrl, weather });
     // setName("");
@@ -47,12 +56,16 @@ export default function AddItemModal({
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      isSubmitDisabled={!isFormValid}
     >
       <label htmlFor="name" className="modal__label">
         Name{" "}
         <input
           type="text"
-          className="modal__input"
+          // className="modal__input"
+          className={`modal__input ${
+            !nameIsValid && name ? "modal__input_invalid" : ""
+          }`}
           id="name"
           placeholder="Name"
           onChange={handleNameChange}
@@ -63,12 +76,18 @@ export default function AddItemModal({
         Image{" "}
         <input
           type="url"
-          className="modal__input"
+          // className="modal__input"
+          className={`modal__input ${urlError ? "modal__input_error" : ""}`}
           id="imageUrl"
           placeholder="imageUrl"
           onChange={handleImageUrlChange}
           value={imageUrl}
         />
+        {urlError && (
+          <span className="modal__error">
+            Enter a valid URL starting with http:// or https://
+          </span>
+        )}
       </label>
       <fieldset className="modal__ratio-buttons">
         <legend className="modal__legend">Select the weather type:</legend>

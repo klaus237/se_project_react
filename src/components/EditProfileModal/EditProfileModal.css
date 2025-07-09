@@ -1,6 +1,8 @@
 .modal__input_error {
   border: 1px solid red;
-  outline: none;
+}
+.modal__input_invalid {
+  border: 1px solid red;
 }
 .modal__error {
   color: red;
