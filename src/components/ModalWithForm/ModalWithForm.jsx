@@ -1,5 +1,5 @@
-import closeIcon from "../../assets/union.png";
 import "./ModalWithForm.css";
+import closeIcon from "../../assets/union.png";
 
 function ModalWithForm({
   title,
