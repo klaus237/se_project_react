@@ -77,7 +77,7 @@ function App() {
     updateUserInfo({ name, avatar })
       .then((newUser) => {
         setCurrentUser(newUser);
-        setActiveModal(null);
+        closeActiveModal();
       })
       .catch((err) => console.error(err));
   };

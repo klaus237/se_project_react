@@ -5,7 +5,12 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { defaultClothingItems } from "../../utils/constants";
 import { getItems } from "../../utils/Api";
 
-function ClothesSection({ onCardClick, clothingItems, handleAddClick }) {
+function ClothesSection({
+  onCardClick,
+  clothingItems,
+  handleAddClick,
+  onCardLike,
+}) {
   const currentUser = useContext(CurrentUserContext);
   console.log("clothingItems", clothingItems);
   //filter
@@ -36,7 +41,12 @@ function ClothesSection({ onCardClick, clothingItems, handleAddClick }) {
 
       <ul className="cards__list">
         {userClothingItems.map((item) => (
-          <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
+          <ItemCard
+            key={item._id}
+            item={item}
+            onCardClick={onCardClick}
+            onCardLike={onCardLike}
+          />
         ))}
 
         {userClothingItems.length === 0 && (

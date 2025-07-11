@@ -49,7 +49,6 @@ export default function AddItemModal({
   return (
     <ModalWithForm
       title="New garment"
-      ss
       buttonText="Add garment"
       name="new-card"
       // activeModal={activeModal}
